@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/tool", "destination": "/tool.html" }
+  ]
+}
