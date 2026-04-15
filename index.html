@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BidForge — Professional Roofing Estimates in Under 2 Minutes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #FF0000;
+    --red-dim: #cc0000;
+    --black: #0a0a0a;
+    --surface: #141414;
+    --surface2: #1e1e1e;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0f0f0;
+    --muted: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+  }
+
+  .logo span { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--red-dim); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,0,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,0,0,0.12);
+    border: 1px solid rgba(255,0,0,0.3);
+    color: var(--red);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--red-dim); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 0.9rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+  .hero-social {
+    margin-top: 3rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    letter-spacing: 0.02em;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--red);
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .feature {
+    background: var(--surface);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .feature:hover { background: var(--surface2); }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,0,0,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+
+  .feature h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .demo-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .demo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .demo-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+
+  .demo-header span {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  input, select, textarea {
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.65rem 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: rgba(255,0,0,0.4);
+  }
+
+  select option { background: #1e1e1e; }
+
+  .generate-btn {
+    width: 100%;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .generate-btn:hover { background: var(--red-dim); }
+
+  .estimate-output {
+    display: none;
+    margin-top: 2rem;
+    border: 1px solid rgba(255,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .estimate-output.visible { display: block; }
+
+  .estimate-header {
+    background: rgba(255,0,0,0.08);
+    border-bottom: 1px solid rgba(255,0,0,0.15);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .estimate-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .estimate-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 3px;
+  }
+
+  .estimate-body {
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.3);
+  }
+
+  .estimate-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  .estimate-meta-item { color: var(--muted); }
+  .estimate-meta-item strong { color: var(--text); font-weight: 500; }
+
+  .line-items {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  .line-item:last-child { border-bottom: none; }
+  .line-item-name { color: var(--text); }
+  .line-item-detail { color: var(--muted); font-size: 0.8rem; }
+  .line-item-price { color: var(--text); font-weight: 500; }
+
+  .estimate-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .estimate-total-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .estimate-total-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--red);
+    letter-spacing: 0.02em;
+  }
+
+  .estimate-footer {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+
+  .demo-watermark {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding: 0.75rem;
+    background: rgba(255,0,0,0.04);
+    border: 1px solid rgba(255,0,0,0.1);
+    border-radius: 4px;
+  }
+
+  .demo-watermark strong { color: var(--red); }
+
+  .pricing-card {
+    max-width: 420px;
+    margin: 3rem auto 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .pricing-top {
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+
+  .price {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .price sup {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    vertical-align: super;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .price-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .price-strike {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-features {
+    padding: 2rem;
+    text-align: left;
+    list-style: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-features li {
+    font-size: 0.92rem;
+    color: var(--muted);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .pricing-features li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  .pricing-features li strong { color: var(--text); font-weight: 500; }
+
+  .pricing-cta {
+    padding: 2rem;
+  }
+
+  .pricing-cta a {
+    display: block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    padding: 1.1rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background 0.2s;
+    margin-bottom: 0.75rem;
+  }
+
+  .pricing-cta a:hover { background: var(--red-dim); }
+
+  .pricing-guarantee {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  footer strong { color: var(--text); }
+
+  .loading-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .loading-dots span {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+  }
+
+  .loading-dots span:nth-child(2) { animation-delay: 0.15s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  @media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr; }
+    .estimate-meta { grid-template-columns: 1fr; }
+    nav { padding: 1rem; }
+    .hero { padding: 7rem 1.25rem 3rem; }
+    .section { padding: 3.5rem 1.25rem; }
+    .demo-section { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Bid<span>Forge</span></div>
+  <a href="#pricing" class="nav-cta">Get Access — $27</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Built for Roofing Contractors</div>
+  <h1>Professional Estimates.<br><em>Under 2 Minutes.</em></h1>
+  <p class="hero-sub">Stop losing jobs to slow follow-up. BidForge generates a complete, professional roofing estimate from your phone — before you leave the driveway.</p>
+  <div class="hero-actions">
+    <a href="#demo" class="btn-primary">Try the Demo Free</a>
+    <a href="#pricing" class="btn-ghost">$27 One Time — No Subscription</a>
+  </div>
+  <p class="hero-social">Built for roofers &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; Works on any phone</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-num">&lt;2</span>
+      <div class="stat-label">Minutes to generate a complete estimate</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">$0</span>
+      <div class="stat-label">Monthly fees — pay once, use forever</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">100%</span>
+      <div class="stat-label">From your phone — no laptop needed</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Why BidForge</div>
+  <h2 class="section-title">Built Around How<br>You Actually Work</h2>
+  <p class="section-sub">Most estimate tools are built for office workers. BidForge is built for contractors standing in a driveway.</p>
+
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>AI-generated, not template-filled</h3>
+      <p>Enter the job details and the AI writes a complete, professional estimate. No filling out forms line by line.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>Works on any phone</h3>
+      <p>No app to download. Open the link, fill in the job, get the estimate. Send it to the homeowner right there.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💼</div>
+      <h3>Looks like you hired a professional</h3>
+      <p>Clean, itemized estimates that make you look established — even if you're a one-truck operation.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <h3>One time. No subscription.</h3>
+      <p>Pay $27 once. Use it on every job forever. No monthly fees, no upsells, no per-estimate charges.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">⏱</div>
+      <h3>Send it before you leave</h3>
+      <p>Homeowners forget fast. Sending an estimate in the driveway closes more jobs than emailing it that night.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📋</div>
+      <h3>Materials, labor, totals — all included</h3>
+      <p>Itemized line items, scope of work, and a professional total. Everything a homeowner needs to say yes.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="demo">
+  <div class="section-label">Live Demo</div>
+  <h2 class="section-title">Try It Right Now</h2>
+  <p class="section-sub">Fill in a job below and see exactly what your customers would receive. No login, no credit card.</p>
+
+  <div class="demo-section">
+    <div class="demo-header">
+      <div class="demo-dot"></div>
+      <span>BidForge Estimate Generator — Demo</span>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Customer Name</label>
+        <input type="text" id="customerName" placeholder="John Smith" value="Mike Harrington">
+      </div>
+      <div class="form-group">
+        <label>Property Address</label>
+        <input type="text" id="address" placeholder="123 Main St, Corona CA" value="4721 Ridgeline Dr, Corona CA">
+      </div>
+      <div class="form-group">
+        <label>Roof Size (squares)</label>
+        <input type="number" id="roofSize" placeholder="e.g. 28" value="32" min="1">
+      </div>
+      <div class="form-group">
+        <label>Roof Type</label>
+        <select id="roofType">
+          <option value="asphalt_shingle" selected>Asphalt Shingle</option>
+          <option value="tile">Tile (Concrete/Clay)</option>
+          <option value="flat_tpo">Flat / TPO</option>
+          <option value="metal">Metal</option>
+          <option value="shake">Wood Shake</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Job Type</label>
+        <select id="jobType">
+          <option value="full_replacement" selected>Full Replacement</option>
+          <option value="repair">Repair</option>
+          <option value="overlay">Overlay (2nd layer)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Shingle Grade</label>
+        <select id="shingleGrade">
+          <option value="standard">Standard (3-tab)</option>
+          <option value="architectural" selected>Architectural (Dimensional)</option>
+          <option value="premium">Premium (Class 4 Impact)</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Additional Notes (optional)</label>
+        <input type="text" id="notes" placeholder="e.g. 2 layers to remove, steep pitch, skylight flashing..." value="1 existing layer to tear off, moderate pitch">
+      </div>
+    </div>
+
+    <button class="generate-btn" onclick="generateEstimate()" id="genBtn">Generate Estimate</button>
+
+    <div class="estimate-output" id="estimateOutput">
+      <div class="estimate-header">
+        <h3>ROOFING ESTIMATE</h3>
+        <div class="estimate-badge">Professional</div>
+      </div>
+      <div class="estimate-body">
+        <div class="estimate-meta" id="estimateMeta"></div>
+        <div class="line-items" id="lineItems"></div>
+        <div class="estimate-total">
+          <div class="estimate-total-label">Total Estimate</div>
+          <div class="estimate-total-price" id="totalPrice"></div>
+        </div>
+        <div class="estimate-footer" id="estimateFooter"></div>
+      </div>
+    </div>
+
+    <div class="demo-watermark" id="demoWatermark" style="display:none;">
+      This is a <strong>live demo</strong>. The full version includes PDF export, your company branding, and email/text delivery. <strong>Get access for $27 →</strong>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="pricing">
+  <div class="section-label">Simple Pricing</div>
+  <h2 class="section-title" style="text-align:center;">One Price.<br>Use It Forever.</h2>
+
+  <div class="pricing-card">
+    <div class="pricing-top">
+      <div class="pricing-label">Full Access</div>
+      <div class="price-strike">$97</div>
+      <div class="price"><sup>$</sup>27</div>
+      <div class="price-note">One-time payment — no subscription, ever</div>
+    </div>
+    <ul class="pricing-features">
+      <li><strong>Unlimited estimates</strong> — generate as many as you need</li>
+      <li><strong>AI-powered</strong> — not a basic template</li>
+      <li><strong>Works on your phone</strong> — no app required</li>
+      <li><strong>Professional PDF output</strong> — send to customers instantly</li>
+      <li><strong>Your company branding</strong> — name, logo, contact info</li>
+      <li><strong>Itemized line items</strong> — materials, labor, totals</li>
+      <li><strong>Lifetime access</strong> — pay once, use forever</li>
+    </ul>
+    <div class="pricing-cta">
+      <a href="https://buy.stripe.com/aFa6oA7EWghhbhVeij3oA01" id="buyBtn">Get BidForge — $27</a>
+      <div class="pricing-guarantee">30-day money-back guarantee. No questions asked.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>BidForge</strong> &nbsp;·&nbsp; Built for roofing contractors &nbsp;·&nbsp; Questions? Contact us at <strong>getbidforge.com</strong>
+</footer>
+
+<script>
+  function generateEstimate() {
+    const btn = document.getElementById('genBtn');
+    btn.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span>';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = 'Generate Estimate';
+      btn.disabled = false;
+      buildEstimate();
+    }, 1800);
+  }
+
+  function buildEstimate() {
+    const name = document.getElementById('customerName').value || 'Customer';
+    const address = document.getElementById('address').value || 'Property Address';
+    const roofSize = parseInt(document.getElementById('roofSize').value) || 25;
+    const roofType = document.getElementById('roofType').value;
+    const jobType = document.getElementById('jobType').value;
+    const grade = document.getElementById('shingleGrade').value;
+    const notes = document.getElementById('notes').value;
+
+    const today = new Date();
+    const expiry = new Date(today);
+    expiry.setDate(expiry.getDate() + 30);
+
+    const fmt = d => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+    const matPrices = { standard: 95, architectural: 130, premium: 195 };
+    const laborBase = { full_replacement: 85, repair: 120, overlay: 65 };
+    const tearoffCost = jobType === 'full_replacement' ? (notes.toLowerCase().includes('2 layer') ? roofSize * 45 : roofSize * 28) : 0;
+
+    const matCost = roofSize * matPrices[grade];
+    const laborCost = roofSize * laborBase[jobType];
+    const underlayment = jobType !== 'repair' ? roofSize * 18 : 0;
+    const disposal = tearoffCost > 0 ? Math.round(tearoffCost * 0.3) : 0;
+    const miscCost = Math.round((matCost + laborCost) * 0.06);
+    const subtotal = matCost + laborCost + underlayment + tearoffCost + disposal + miscCost;
+    const total = subtotal;
+
+    const roofLabels = {
+      asphalt_shingle: 'Asphalt Shingle',
+      tile: 'Concrete/Clay Tile',
+      flat_tpo: 'Flat Roof / TPO',
+      metal: 'Metal Roofing',
+      shake: 'Wood Shake'
+    };
+
+    const gradeLabels = { standard: '3-Tab Standard', architectural: 'Architectural Dimensional', premium: 'Class 4 Impact-Resistant' };
+    const jobLabels = { full_replacement: 'Full Replacement', repair: 'Repair', overlay: 'Overlay (2nd Layer)' };
+
+    document.getElementById('estimateMeta').innerHTML = `
+      <div class="estimate-meta-item">Prepared for: <strong>${name}</strong></div>
+      <div class="estimate-meta-item">Date: <strong>${fmt(today)}</strong></div>
+      <div class="estimate-meta-item">Property: <strong>${address}</strong></div>
+      <div class="estimate-meta-item">Valid through: <strong>${fmt(expiry)}</strong></div>
+      <div class="estimate-meta-item">Roof area: <strong>${roofSize} squares (${roofSize * 100} sq ft)</strong></div>
+      <div class="estimate-meta-item">Job type: <strong>${jobLabels[jobType]}</strong></div>
+    `;
+
+    let items = [];
+
+    items.push({ name: `${gradeLabels[grade]} Shingles`, detail: `${roofSize} squares × $${matPrices[grade]}/sq`, price: matCost });
+
+    if (underlayment > 0)
+      items.push({ name: 'Synthetic Underlayment', detail: `${roofSize} squares × $18/sq`, price: underlayment });
+
+    if (tearoffCost > 0)
+      items.push({ name: 'Tear-Off & Removal', detail: notes.toLowerCase().includes('2 layer') ? '2 existing layers' : '1 existing layer', price: tearoffCost });
+
+    if (disposal > 0)
+      items.push({ name: 'Haul Away & Disposal', detail: 'Dumpster + dump fees', price: disposal });
+
+    items.push({ name: 'Labor — Installation', detail: `${roofSize} squares × $${laborBase[jobType]}/sq`, price: laborCost });
+    items.push({ name: 'Flashing, Vents & Accessories', detail: 'Ridge cap, step flashing, pipe boots', price: miscCost });
+
+    document.getElementById('lineItems').innerHTML = items.map(i => `
+      <div class="line-item">
+        <div>
+          <div class="line-item-name">${i.name}</div>
+          <div class="line-item-detail">${i.detail}</div>
+        </div>
+        <div class="line-item-price">$${i.price.toLocaleString()}</div>
+      </div>
+    `).join('');
+
+    document.getElementById('totalPrice').textContent = `$${total.toLocaleString()}`;
+
+    document.getElementById('estimateFooter').innerHTML = `
+      Estimate valid for 30 days. Price includes all materials, labor, and cleanup. 
+      50% deposit required to schedule. Balance due upon completion.
+      ${notes ? '<br><em>Notes: ' + notes + '</em>' : ''}
+    `;
+
+    document.getElementById('estimateOutput').classList.add('visible');
+    document.getElementById('demoWatermark').style.display = 'block';
+    document.getElementById('estimateOutput').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+
+</body>
+</html>
