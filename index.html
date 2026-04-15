@@ -3,944 +3,224 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BidForge — Professional Roofing Estimates in Under 2 Minutes</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>BidForge — Roofing Estimate App | Professional Proposals in 2 Minutes</title>
+<meta name="description" content="BidForge is the fastest roofing estimate app for contractors. Generate a professional proposal PDF in under 2 minutes from your phone. One-time $27 payment. No subscription.">
+<meta name="keywords" content="roofing estimate app, roofing proposal software, contractor estimate generator, roofing bid software, roofing invoice app, contractor proposal app, roofing contractor tools">
+<meta name="author" content="BidForge">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.getbidforge.com">
+
+<!-- Ahrefs -->
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="aBDVQQgMx1a0Kco08sohzQ" async></script>
+<meta name="ahrefs-site-verification" content="82b904154774b77cab8013fc812556771b89cc8d0e841082de0ee5f7fdd3d063">
+
+<!-- Open Graph (Facebook / Social sharing) -->
+<meta property="og:title" content="BidForge — Roofing Estimate App | Win More Jobs">
+<meta property="og:description" content="Generate professional roofing proposals in under 2 minutes from your phone. One-time $27 payment. Built for roofing contractors.">
+<meta property="og:url" content="https://www.getbidforge.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BidForge">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BidForge — Roofing Estimate App">
+<meta name="twitter:description" content="Generate professional roofing proposals in under 2 minutes. Built for contractors. $27 one-time payment.">
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BidForge",
+  "description": "Mobile-first roofing estimate and proposal generator for contractors. Generate professional PDFs in under 2 minutes.",
+  "url": "https://www.getbidforge.com",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "27.00",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any"
+}
+</script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --red: #FF0000;
-    --red-dim: #cc0000;
-    --black: #0a0a0a;
-    --surface: #141414;
-    --surface2: #1e1e1e;
-    --border: rgba(255,255,255,0.08);
-    --text: #f0f0f0;
-    --muted: #888;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    letter-spacing: 0.05em;
-    color: #fff;
-  }
-
-  .logo span { color: var(--red); }
-
-  .nav-cta {
-    background: var(--red);
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1.4rem;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .nav-cta:hover { background: var(--red-dim); }
-
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(255,0,0,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-badge {
-    display: inline-block;
-    background: rgba(255,0,0,0.12);
-    border: 1px solid rgba(255,0,0,0.3);
-    color: var(--red);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 0.95;
-    letter-spacing: 0.02em;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    max-width: 900px;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--red);
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    line-height: 1.7;
-  }
-
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn-primary {
-    background: var(--red);
-    color: #fff;
-    border: none;
-    padding: 0.9rem 2.2rem;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-
-  .btn-primary:hover { background: var(--red-dim); transform: translateY(-1px); }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 0.9rem 2.2rem;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
-    display: inline-block;
-  }
-
-  .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-
-  .hero-social {
-    margin-top: 3rem;
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-
-  .section {
-    padding: 5rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    letter-spacing: 0.02em;
-    color: #fff;
-    line-height: 1.05;
-    margin-bottom: 1rem;
-  }
-
-  .section-sub {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 500px;
-    line-height: 1.7;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 4rem;
-  }
-
-  .stat {
-    background: var(--surface);
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    color: var(--red);
-    display: block;
-    letter-spacing: 0.02em;
-  }
-
-  .stat-label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 3rem;
-  }
-
-  .feature {
-    background: var(--surface);
-    padding: 2rem;
-    transition: background 0.2s;
-  }
-
-  .feature:hover { background: var(--surface2); }
-
-  .feature-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(255,0,0,0.1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    font-size: 18px;
-  }
-
-  .feature h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-
-  .feature p {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .demo-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2.5rem;
-    margin-top: 3rem;
-  }
-
-  .demo-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .demo-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--red);
-  }
-
-  .demo-header span {
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .form-group.full { grid-column: 1 / -1; }
-
-  label {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  input, select, textarea {
-    background: var(--black);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    padding: 0.65rem 0.85rem;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-
-  input:focus, select:focus, textarea:focus {
-    border-color: rgba(255,0,0,0.4);
-  }
-
-  select option { background: #1e1e1e; }
-
-  .generate-btn {
-    width: 100%;
-    background: var(--red);
-    color: #fff;
-    border: none;
-    padding: 1rem;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s;
-    letter-spacing: 0.02em;
-  }
-
-  .generate-btn:hover { background: var(--red-dim); }
-
-  .estimate-output {
-    display: none;
-    margin-top: 2rem;
-    border: 1px solid rgba(255,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .estimate-output.visible { display: block; }
-
-  .estimate-header {
-    background: rgba(255,0,0,0.08);
-    border-bottom: 1px solid rgba(255,0,0,0.15);
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .estimate-header h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    letter-spacing: 0.04em;
-    color: #fff;
-  }
-
-  .estimate-badge {
-    background: var(--red);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.75rem;
-    border-radius: 3px;
-  }
-
-  .estimate-body {
-    padding: 1.5rem;
-    background: rgba(0,0,0,0.3);
-  }
-
-  .estimate-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 2rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.88rem;
-  }
-
-  .estimate-meta-item { color: var(--muted); }
-  .estimate-meta-item strong { color: var(--text); font-weight: 500; }
-
-  .line-items {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-  }
-
-  .line-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.9rem;
-  }
-
-  .line-item:last-child { border-bottom: none; }
-  .line-item-name { color: var(--text); }
-  .line-item-detail { color: var(--muted); font-size: 0.8rem; }
-  .line-item-price { color: var(--text); font-weight: 500; }
-
-  .estimate-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .estimate-total-label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-  }
-
-  .estimate-total-price {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--red);
-    letter-spacing: 0.02em;
-  }
-
-  .estimate-footer {
-    font-size: 0.78rem;
-    color: var(--muted);
-    text-align: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    margin-top: 1rem;
-  }
-
-  .demo-watermark {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    padding: 0.75rem;
-    background: rgba(255,0,0,0.04);
-    border: 1px solid rgba(255,0,0,0.1);
-    border-radius: 4px;
-  }
-
-  .demo-watermark strong { color: var(--red); }
-
-  .pricing-card {
-    max-width: 420px;
-    margin: 3rem auto 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .pricing-top {
-    padding: 2.5rem 2rem 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .pricing-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 1rem;
-  }
-
-  .price {
-    font-family: var(--font-display);
-    font-size: 5rem;
-    color: #fff;
-    line-height: 1;
-    letter-spacing: 0.02em;
-  }
-
-  .price sup {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    vertical-align: super;
-    font-weight: 400;
-    color: var(--muted);
-  }
-
-  .price-note {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-  }
-
-  .price-strike {
-    font-size: 0.9rem;
-    color: var(--muted);
-    text-decoration: line-through;
-    margin-bottom: 0.25rem;
-  }
-
-  .pricing-features {
-    padding: 2rem;
-    text-align: left;
-    list-style: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .pricing-features li {
-    font-size: 0.92rem;
-    color: var(--muted);
-    padding: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .pricing-features li::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--red);
-    flex-shrink: 0;
-  }
-
-  .pricing-features li strong { color: var(--text); font-weight: 500; }
-
-  .pricing-cta {
-    padding: 2rem;
-  }
-
-  .pricing-cta a {
-    display: block;
-    background: var(--red);
-    color: #fff;
-    text-decoration: none;
-    padding: 1.1rem;
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: background 0.2s;
-    margin-bottom: 0.75rem;
-  }
-
-  .pricing-cta a:hover { background: var(--red-dim); }
-
-  .pricing-guarantee {
-    font-size: 0.78rem;
-    color: var(--muted);
-  }
-
-  footer {
-    border-top: 1px solid var(--border);
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-
-  footer strong { color: var(--text); }
-
-  .loading-dots {
-    display: inline-flex;
-    gap: 4px;
-    align-items: center;
-  }
-
-  .loading-dots span {
-    width: 6px;
-    height: 6px;
-    background: #fff;
-    border-radius: 50%;
-    animation: bounce 1s infinite;
-  }
-
-  .loading-dots span:nth-child(2) { animation-delay: 0.15s; }
-  .loading-dots span:nth-child(3) { animation-delay: 0.3s; }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); opacity: 0.4; }
-    50% { transform: translateY(-4px); opacity: 1; }
-  }
-
-  @media (max-width: 640px) {
-    .form-grid { grid-template-columns: 1fr; }
-    .stats-row { grid-template-columns: 1fr; }
-    .estimate-meta { grid-template-columns: 1fr; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #000000; color: #f0ece6; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 0.5px solid #1e1e1e; background: #000000; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-icon { width: 34px; height: 34px; background: #000000; border: 0.5px solid #2a2a2a; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .nav-b { font-size: 13px; font-weight: 700; color: #fff; }
+  .nav-f { font-size: 13px; font-weight: 300; color: #D83123; }
+  .nav-bid { font-size: 18px; font-weight: 700; color: #f0ece6; letter-spacing: -0.5px; }
+  .nav-forge { font-size: 18px; font-weight: 300; color: #D83123; letter-spacing: -0.5px; }
+  .nav-cta { padding: 8px 18px; background: #D83123; color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; }
+  .nav-cta:hover { background: #B00000; }
+  .hero { padding: 5rem 2rem 4rem; text-align: center; max-width: 780px; margin: 0 auto; }
+  .hero-tag { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #D83123; border: 0.5px solid #2a0000; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 52px; font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; color: #f0ece6; margin-bottom: 1.25rem; }
+  .hero h1 span { color: #D83123; }
+  .hero-sub { font-size: 18px; font-weight: 300; color: #888; line-height: 1.6; margin-bottom: 2.5rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-main { padding: 14px 32px; background: #D83123; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit; }
+  .btn-main:hover { background: #B00000; }
+  .btn-ghost { padding: 14px 32px; background: transparent; color: #f0ece6; border: 0.5px solid #2a2a2a; border-radius: 8px; font-size: 15px; cursor: pointer; font-family: inherit; }
+  .btn-ghost:hover { background: #111; }
+  .hero-note { font-size: 12px; color: #444; margin-top: 1rem; }
+  .divider { width: 100%; height: 0.5px; background: #1a1a1a; }
+  .section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #D83123; margin-bottom: 1rem; }
+  .section-h { font-size: 36px; font-weight: 700; letter-spacing: -1px; color: #f0ece6; margin-bottom: 1rem; line-height: 1.2; }
+  .section-h span { color: #D83123; }
+  .section-sub { font-size: 16px; color: #666; line-height: 1.7; max-width: 580px; margin-bottom: 2.5rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .pain-card { background: #111; border: 0.5px solid #1e1e1e; border-radius: 10px; padding: 1.25rem; }
+  .pain-icon { font-size: 22px; margin-bottom: 0.75rem; }
+  .pain-title { font-size: 14px; font-weight: 500; color: #f0ece6; margin-bottom: 6px; }
+  .pain-body { font-size: 13px; color: #555; line-height: 1.6; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .step { text-align: center; padding: 1.5rem 1rem; }
+  .step-num { width: 40px; height: 40px; background: #D83123; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: #fff; margin: 0 auto 1rem; }
+  .step-title { font-size: 15px; font-weight: 500; color: #f0ece6; margin-bottom: 6px; }
+  .step-body { font-size: 13px; color: #555; line-height: 1.6; }
+  .feat-card { background: #000000; border: 0.5px solid #1e1e1e; border-radius: 10px; padding: 1.25rem; border-top: 2px solid #D83123; }
+  .feat-title { font-size: 14px; font-weight: 500; color: #f0ece6; margin-bottom: 6px; }
+  .feat-body { font-size: 13px; color: #555; line-height: 1.6; }
+  .pricing { padding: 4rem 2rem; max-width: 500px; margin: 0 auto; text-align: center; }
+  .price-card { background: #111; border: 0.5px solid #2a2a2a; border-radius: 14px; padding: 2.5rem 2rem; margin-top: 2rem; position: relative; }
+  .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #D83123; border-radius: 14px 14px 0 0; }
+  .price-badge { display: inline-block; font-size: 11px; background: #150000; color: #D83123; border: 0.5px solid #2a0000; padding: 4px 12px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .price-amount { font-size: 64px; font-weight: 700; color: #f0ece6; letter-spacing: -2px; line-height: 1; }
+  .price-amount sup { font-size: 24px; vertical-align: top; margin-top: 12px; display: inline-block; color: #D83123; }
+  .price-once { font-size: 13px; color: #555; margin-top: 6px; margin-bottom: 1.5rem; }
+  .price-list { list-style: none; text-align: left; margin-bottom: 2rem; }
+  .price-list li { font-size: 14px; color: #888; padding: 8px 0; border-bottom: 0.5px solid #1a1a1a; display: flex; align-items: center; gap: 10px; }
+  .price-list li::before { content: ''; width: 6px; height: 6px; background: #D83123; border-radius: 50%; flex-shrink: 0; }
+  .price-cta { width: 100%; padding: 14px; background: #D83123; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit; }
+  .price-cta:hover { background: #B00000; }
+  .price-guarantee { font-size: 12px; color: #444; margin-top: 1rem; }
+  .faq { padding: 4rem 2rem; max-width: 680px; margin: 0 auto; }
+  .faq-item { border-bottom: 0.5px solid #1a1a1a; padding: 1.25rem 0; cursor: pointer; }
+  .faq-q { font-size: 15px; font-weight: 500; color: #f0ece6; display: flex; justify-content: space-between; align-items: center; }
+  .faq-arrow { color: #D83123; font-size: 20px; transition: transform 0.2s; line-height: 1; }
+  .faq-a { font-size: 14px; color: #666; line-height: 1.7; margin-top: 0.75rem; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+  footer { padding: 2rem; border-top: 0.5px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 12px; color: #444; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 12px; color: #444; text-decoration: none; cursor: pointer; }
+  .footer-links a:hover { color: #D83123; }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 36px; }
+    .section-h { font-size: 28px; }
     nav { padding: 1rem; }
-    .hero { padding: 7rem 1.25rem 3rem; }
-    .section { padding: 3.5rem 1.25rem; }
-    .demo-section { padding: 1.5rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Bid<span>Forge</span></div>
-  <a href="#pricing" class="nav-cta">Get Access — $27</a>
+  <div class="nav-logo">
+    <div class="nav-icon"><span class="nav-b">B</span><span class="nav-f">F</span></div>
+    <div style="display:flex;align-items:baseline"><span class="nav-bid">Bid</span><span class="nav-forge">Forge</span></div>
+  </div>
+  <button class="nav-cta" onclick="window.location.href='https://buy.stripe.com/aFa6oA7EWghhbhVeij3oA01'">Get BidForge — $27</button>
 </nav>
 
-<section class="hero">
-  <div class="hero-badge">Built for Roofing Contractors</div>
-  <h1>Professional Estimates.<br><em>Under 2 Minutes.</em></h1>
-  <p class="hero-sub">Stop losing jobs to slow follow-up. BidForge generates a complete, professional roofing estimate from your phone — before you leave the driveway.</p>
-  <div class="hero-actions">
-    <a href="#demo" class="btn-primary">Try the Demo Free</a>
-    <a href="#pricing" class="btn-ghost">$27 One Time — No Subscription</a>
+<div class="hero">
+  <div class="hero-tag">Built for roofing contractors</div>
+  <h1>Win more jobs.<br><span>Look like a pro.</span></h1>
+  <p class="hero-sub">Generate a clean, professional estimate in under 2 minutes. Right from your phone on the job site. No templates. No spreadsheets. No BS.</p>
+  <div class="hero-btns">
+    <button class="btn-main" onclick="window.location.href='https://buy.stripe.com/aFa6oA7EWghhbhVeij3oA01'">Get instant access — $27</button>
+    <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
   </div>
-  <p class="hero-social">Built for roofers &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; Works on any phone</p>
-</section>
+  <p class="hero-note">One time payment. No subscription. No expiry.</p>
+</div>
 
 <div class="divider"></div>
 
-<section class="section">
-  <div class="stats-row">
-    <div class="stat">
-      <span class="stat-num">&lt;2</span>
-      <div class="stat-label">Minutes to generate a complete estimate</div>
-    </div>
-    <div class="stat">
-      <span class="stat-num">$0</span>
-      <div class="stat-label">Monthly fees — pay once, use forever</div>
-    </div>
-    <div class="stat">
-      <span class="stat-num">100%</span>
-      <div class="stat-label">From your phone — no laptop needed</div>
-    </div>
+<div class="section">
+  <div class="section-tag">The problem</div>
+  <h2 class="section-h">You're losing jobs to contractors who <span>look more professional.</span></h2>
+  <p class="section-sub">It's not always about price. Homeowners hire the contractor they trust. And trust starts with a professional proposal.</p>
+  <div class="grid-4">
+    <div class="pain-card"><div class="pain-icon">📋</div><div class="pain-title">Handwritten estimates</div><div class="pain-body">Paper estimates look unprofessional and get lost. Clients compare you to contractors who send clean digital proposals.</div></div>
+    <div class="pain-card"><div class="pain-icon">⏱</div><div class="pain-title">Wasted hours</div><div class="pain-body">Spending time formatting spreadsheets instead of being on the job. Every hour on paperwork is an hour not making money.</div></div>
+    <div class="pain-card"><div class="pain-icon">📉</div><div class="pain-title">Lost bids</div><div class="pain-body">The other guy sent his proposal in 10 minutes. Yours took two days. Client already moved on before yours arrived.</div></div>
+    <div class="pain-card"><div class="pain-icon">📱</div><div class="pain-title">No mobile solution</div><div class="pain-body">You're on the roof, not at a desk. Existing tools were built for office workers, not contractors in the field.</div></div>
   </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<section class="section">
-  <div class="section-label">Why BidForge</div>
-  <h2 class="section-title">Built Around How<br>You Actually Work</h2>
-  <p class="section-sub">Most estimate tools are built for office workers. BidForge is built for contractors standing in a driveway.</p>
-
-  <div class="features-grid">
-    <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <h3>AI-generated, not template-filled</h3>
-      <p>Enter the job details and the AI writes a complete, professional estimate. No filling out forms line by line.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">📱</div>
-      <h3>Works on any phone</h3>
-      <p>No app to download. Open the link, fill in the job, get the estimate. Send it to the homeowner right there.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">💼</div>
-      <h3>Looks like you hired a professional</h3>
-      <p>Clean, itemized estimates that make you look established — even if you're a one-truck operation.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <h3>One time. No subscription.</h3>
-      <p>Pay $27 once. Use it on every job forever. No monthly fees, no upsells, no per-estimate charges.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">⏱</div>
-      <h3>Send it before you leave</h3>
-      <p>Homeowners forget fast. Sending an estimate in the driveway closes more jobs than emailing it that night.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">📋</div>
-      <h3>Materials, labor, totals — all included</h3>
-      <p>Itemized line items, scope of work, and a professional total. Everything a homeowner needs to say yes.</p>
-    </div>
+<div class="section" id="how">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-h">Three steps.<br><span>Two minutes.</span> Done.</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-title">Fill in the job</div><div class="step-body">Enter your business info, client details, and line items. Takes less than 2 minutes on your phone.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-title">Preview instantly</div><div class="step-body">See exactly how your client will see the proposal before you send it. Clean, professional, branded.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-title">Download and send</div><div class="step-body">One click generates a professional PDF. Email or text it to your client on the spot. Win the job.</div></div>
   </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<section class="section" id="demo">
-  <div class="section-label">Live Demo</div>
-  <h2 class="section-title">Try It Right Now</h2>
-  <p class="section-sub">Fill in a job below and see exactly what your customers would receive. No login, no credit card.</p>
-
-  <div class="demo-section">
-    <div class="demo-header">
-      <div class="demo-dot"></div>
-      <span>BidForge Estimate Generator — Demo</span>
-    </div>
-
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Customer Name</label>
-        <input type="text" id="customerName" placeholder="John Smith" value="Mike Harrington">
-      </div>
-      <div class="form-group">
-        <label>Property Address</label>
-        <input type="text" id="address" placeholder="123 Main St, Corona CA" value="4721 Ridgeline Dr, Corona CA">
-      </div>
-      <div class="form-group">
-        <label>Roof Size (squares)</label>
-        <input type="number" id="roofSize" placeholder="e.g. 28" value="32" min="1">
-      </div>
-      <div class="form-group">
-        <label>Roof Type</label>
-        <select id="roofType">
-          <option value="asphalt_shingle" selected>Asphalt Shingle</option>
-          <option value="tile">Tile (Concrete/Clay)</option>
-          <option value="flat_tpo">Flat / TPO</option>
-          <option value="metal">Metal</option>
-          <option value="shake">Wood Shake</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Job Type</label>
-        <select id="jobType">
-          <option value="full_replacement" selected>Full Replacement</option>
-          <option value="repair">Repair</option>
-          <option value="overlay">Overlay (2nd layer)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Shingle Grade</label>
-        <select id="shingleGrade">
-          <option value="standard">Standard (3-tab)</option>
-          <option value="architectural" selected>Architectural (Dimensional)</option>
-          <option value="premium">Premium (Class 4 Impact)</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label>Additional Notes (optional)</label>
-        <input type="text" id="notes" placeholder="e.g. 2 layers to remove, steep pitch, skylight flashing..." value="1 existing layer to tear off, moderate pitch">
-      </div>
-    </div>
-
-    <button class="generate-btn" onclick="generateEstimate()" id="genBtn">Generate Estimate</button>
-
-    <div class="estimate-output" id="estimateOutput">
-      <div class="estimate-header">
-        <h3>ROOFING ESTIMATE</h3>
-        <div class="estimate-badge">Professional</div>
-      </div>
-      <div class="estimate-body">
-        <div class="estimate-meta" id="estimateMeta"></div>
-        <div class="line-items" id="lineItems"></div>
-        <div class="estimate-total">
-          <div class="estimate-total-label">Total Estimate</div>
-          <div class="estimate-total-price" id="totalPrice"></div>
-        </div>
-        <div class="estimate-footer" id="estimateFooter"></div>
-      </div>
-    </div>
-
-    <div class="demo-watermark" id="demoWatermark" style="display:none;">
-      This is a <strong>live demo</strong>. The full version includes PDF export, your company branding, and email/text delivery. <strong>Get access for $27 →</strong>
-    </div>
+<div class="section">
+  <div class="section-tag">Features</div>
+  <h2 class="section-h">Everything you need.<br><span>Nothing you don't.</span></h2>
+  <div class="grid-4" style="margin-top:2rem">
+    <div class="feat-card"><div class="feat-title">Mobile first</div><div class="feat-body">Built to work perfectly on your phone. Fill out a full estimate standing on a driveway in under 2 minutes.</div></div>
+    <div class="feat-card"><div class="feat-title">Instant PDF</div><div class="feat-body">One button generates a clean, professional PDF ready to email or text your client immediately.</div></div>
+    <div class="feat-card"><div class="feat-title">Auto calculations</div><div class="feat-body">Add line items and quantities — BidForge handles all the math automatically. No more errors.</div></div>
+    <div class="feat-card"><div class="feat-title">Your brand on it</div><div class="feat-body">Your company name, license number, and contact info on every proposal. Looks like you paid a designer.</div></div>
   </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
-<section class="section" id="pricing">
-  <div class="section-label">Simple Pricing</div>
-  <h2 class="section-title" style="text-align:center;">One Price.<br>Use It Forever.</h2>
-
-  <div class="pricing-card">
-    <div class="pricing-top">
-      <div class="pricing-label">Full Access</div>
-      <div class="price-strike">$97</div>
-      <div class="price"><sup>$</sup>27</div>
-      <div class="price-note">One-time payment — no subscription, ever</div>
-    </div>
-    <ul class="pricing-features">
-      <li><strong>Unlimited estimates</strong> — generate as many as you need</li>
-      <li><strong>AI-powered</strong> — not a basic template</li>
-      <li><strong>Works on your phone</strong> — no app required</li>
-      <li><strong>Professional PDF output</strong> — send to customers instantly</li>
-      <li><strong>Your company branding</strong> — name, logo, contact info</li>
-      <li><strong>Itemized line items</strong> — materials, labor, totals</li>
-      <li><strong>Lifetime access</strong> — pay once, use forever</li>
+<div class="pricing" id="pricing">
+  <div class="section-tag" style="text-align:center">Pricing</div>
+  <h2 class="section-h" style="text-align:center">One price.<br><span>Yours forever.</span></h2>
+  <div class="price-card">
+    <div class="price-badge">Lifetime access</div>
+    <div class="price-amount"><sup>$</sup>27</div>
+    <div class="price-once">One time payment — no subscription ever</div>
+    <ul class="price-list">
+      <li>Unlimited estimates — forever</li>
+      <li>Instant PDF download every time</li>
+      <li>Mobile optimized — works on any device</li>
+      <li>Auto calculating line items</li>
+      <li>Your business info on every proposal</li>
+      <li>All future updates included</li>
     </ul>
-    <div class="pricing-cta">
-      <a href="https://buy.stripe.com/aFa6oA7EWghhbhVeij3oA01" id="buyBtn">Get BidForge — $27</a>
-      <div class="pricing-guarantee">30-day money-back guarantee. No questions asked.</div>
-    </div>
+    <button class="price-cta" onclick="window.location.href='https://buy.stripe.com/aFa6oA7EWghhbhVeij3oA01'">Get BidForge now — $27</button>
+    <p class="price-guarantee">One job won pays for this tool 100x over.</p>
   </div>
-</section>
+</div>
+
+<div class="divider"></div>
+
+<div class="faq">
+  <div class="section-tag">Questions</div>
+  <h2 class="section-h" style="margin-bottom:1.5rem">Quick answers.</h2>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do I need to install anything? <span class="faq-arrow">+</span></div><div class="faq-a">No. BidForge runs entirely in your browser. Open it on your phone, tablet, or laptop — no app download required.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Does it really work on my phone? <span class="faq-arrow">+</span></div><div class="faq-a">Yes. It was built mobile first specifically for contractors in the field. Fill out a full estimate standing on a client's driveway in under 2 minutes.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What does the PDF look like? <span class="faq-arrow">+</span></div><div class="faq-a">Clean, dark, professional. Your company name and contact info in the header, itemized line items, auto calculated totals, and your terms at the bottom. Looks like something a big company would send.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is this really a one time payment? <span class="faq-arrow">+</span></div><div class="faq-a">Yes. $27 once. No monthly fees, no subscription, no surprises. Pay once and it's yours forever including all future updates.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What trades is this built for? <span class="faq-arrow">+</span></div><div class="faq-a">Built specifically for roofing contractors right now. Plumbing, HVAC, electrical and general contractor versions are coming soon.</div></div>
+</div>
+
+<div class="divider"></div>
 
 <footer>
-  <strong>BidForge</strong> &nbsp;·&nbsp; Built for roofing contractors &nbsp;·&nbsp; Questions? Contact us at <strong>getbidforge.com</strong>
+  <div class="nav-logo">
+    <div class="nav-icon"><span class="nav-b">B</span><span class="nav-f">F</span></div>
+    <div style="display:flex;align-items:baseline"><span class="nav-bid" style="font-size:15px">Bid</span><span class="nav-forge" style="font-size:15px">Forge</span></div>
+  </div>
+  <div class="footer-copy">© 2026 BidForge. All rights reserved.</div>
+  <div class="footer-links"><a>Privacy</a><a>Terms</a><a>Support</a></div>
 </footer>
-
-<script>
-  function generateEstimate() {
-    const btn = document.getElementById('genBtn');
-    btn.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span>';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      btn.innerHTML = 'Generate Estimate';
-      btn.disabled = false;
-      buildEstimate();
-    }, 1800);
-  }
-
-  function buildEstimate() {
-    const name = document.getElementById('customerName').value || 'Customer';
-    const address = document.getElementById('address').value || 'Property Address';
-    const roofSize = parseInt(document.getElementById('roofSize').value) || 25;
-    const roofType = document.getElementById('roofType').value;
-    const jobType = document.getElementById('jobType').value;
-    const grade = document.getElementById('shingleGrade').value;
-    const notes = document.getElementById('notes').value;
-
-    const today = new Date();
-    const expiry = new Date(today);
-    expiry.setDate(expiry.getDate() + 30);
-
-    const fmt = d => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-    const matPrices = { standard: 95, architectural: 130, premium: 195 };
-    const laborBase = { full_replacement: 85, repair: 120, overlay: 65 };
-    const tearoffCost = jobType === 'full_replacement' ? (notes.toLowerCase().includes('2 layer') ? roofSize * 45 : roofSize * 28) : 0;
-
-    const matCost = roofSize * matPrices[grade];
-    const laborCost = roofSize * laborBase[jobType];
-    const underlayment = jobType !== 'repair' ? roofSize * 18 : 0;
-    const disposal = tearoffCost > 0 ? Math.round(tearoffCost * 0.3) : 0;
-    const miscCost = Math.round((matCost + laborCost) * 0.06);
-    const subtotal = matCost + laborCost + underlayment + tearoffCost + disposal + miscCost;
-    const total = subtotal;
-
-    const roofLabels = {
-      asphalt_shingle: 'Asphalt Shingle',
-      tile: 'Concrete/Clay Tile',
-      flat_tpo: 'Flat Roof / TPO',
-      metal: 'Metal Roofing',
-      shake: 'Wood Shake'
-    };
-
-    const gradeLabels = { standard: '3-Tab Standard', architectural: 'Architectural Dimensional', premium: 'Class 4 Impact-Resistant' };
-    const jobLabels = { full_replacement: 'Full Replacement', repair: 'Repair', overlay: 'Overlay (2nd Layer)' };
-
-    document.getElementById('estimateMeta').innerHTML = `
-      <div class="estimate-meta-item">Prepared for: <strong>${name}</strong></div>
-      <div class="estimate-meta-item">Date: <strong>${fmt(today)}</strong></div>
-      <div class="estimate-meta-item">Property: <strong>${address}</strong></div>
-      <div class="estimate-meta-item">Valid through: <strong>${fmt(expiry)}</strong></div>
-      <div class="estimate-meta-item">Roof area: <strong>${roofSize} squares (${roofSize * 100} sq ft)</strong></div>
-      <div class="estimate-meta-item">Job type: <strong>${jobLabels[jobType]}</strong></div>
-    `;
-
-    let items = [];
-
-    items.push({ name: `${gradeLabels[grade]} Shingles`, detail: `${roofSize} squares × $${matPrices[grade]}/sq`, price: matCost });
-
-    if (underlayment > 0)
-      items.push({ name: 'Synthetic Underlayment', detail: `${roofSize} squares × $18/sq`, price: underlayment });
-
-    if (tearoffCost > 0)
-      items.push({ name: 'Tear-Off & Removal', detail: notes.toLowerCase().includes('2 layer') ? '2 existing layers' : '1 existing layer', price: tearoffCost });
-
-    if (disposal > 0)
-      items.push({ name: 'Haul Away & Disposal', detail: 'Dumpster + dump fees', price: disposal });
-
-    items.push({ name: 'Labor — Installation', detail: `${roofSize} squares × $${laborBase[jobType]}/sq`, price: laborCost });
-    items.push({ name: 'Flashing, Vents & Accessories', detail: 'Ridge cap, step flashing, pipe boots', price: miscCost });
-
-    document.getElementById('lineItems').innerHTML = items.map(i => `
-      <div class="line-item">
-        <div>
-          <div class="line-item-name">${i.name}</div>
-          <div class="line-item-detail">${i.detail}</div>
-        </div>
-        <div class="line-item-price">$${i.price.toLocaleString()}</div>
-      </div>
-    `).join('');
-
-    document.getElementById('totalPrice').textContent = `$${total.toLocaleString()}`;
-
-    document.getElementById('estimateFooter').innerHTML = `
-      Estimate valid for 30 days. Price includes all materials, labor, and cleanup. 
-      50% deposit required to schedule. Balance due upon completion.
-      ${notes ? '<br><em>Notes: ' + notes + '</em>' : ''}
-    `;
-
-    document.getElementById('estimateOutput').classList.add('visible');
-    document.getElementById('demoWatermark').style.display = 'block';
-    document.getElementById('estimateOutput').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-</script>
 
 </body>
 </html>
