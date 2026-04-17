@@ -17,58 +17,106 @@
   .bf-f { font-size: 15px; font-weight: 300; color: #D83123; }
   .bf-bid { font-size: 22px; font-weight: 700; color: #f0ece6; letter-spacing: -0.5px; }
   .bf-forge { font-size: 22px; font-weight: 300; color: #D83123; letter-spacing: -0.5px; }
+  .bf-header-right { display: flex; align-items: center; gap: 10px; }
   .bf-badge { font-size: 11px; background: #1a1a1a; color: #a0998f; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px; border: 0.5px solid #2a2a2a; }
+
+  /* STATUS TAG */
+  .bf-status-wrap { display: flex; align-items: center; gap: 6px; }
+  .bf-status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .bf-status-select { background: #111; border: 0.5px solid #2a2a2a; border-radius: 6px; color: #a0998f; font-size: 12px; padding: 4px 8px; font-family: inherit; cursor: pointer; appearance: none; -webkit-appearance: none; }
+  .bf-status-select:focus { outline: none; border-color: #D83123; }
+  .status-draft .bf-status-dot { background: #555; }
+  .status-sent .bf-status-dot { background: #D4A017; }
+  .status-approved .bf-status-dot { background: #2ECC71; }
+  .status-draft .bf-status-select { color: #888; }
+  .status-sent .bf-status-select { color: #D4A017; }
+  .status-approved .bf-status-select { color: #2ECC71; }
+
+  /* AUTOSAVE BANNER */
+  .bf-autosave { font-size: 11px; color: #333; text-align: right; margin-bottom: 0.75rem; min-height: 16px; transition: color 0.3s; }
+  .bf-autosave.saved { color: #2ECC71; }
 
   /* SECTIONS */
   .bf-section { background: #111; border: 0.5px solid #222; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
-  .bf-section-title { font-size: 11px; font-weight: 500; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .bf-section-title { font-size: 11px; font-weight: 500; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
+  .bf-section-action { font-size: 11px; color: #D83123; cursor: pointer; text-decoration: none; background: none; border: none; font-family: inherit; padding: 0; }
+  .bf-section-action:hover { color: #ff4433; }
   .bf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .bf-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .bf-field { display: flex; flex-direction: column; gap: 4px; }
   .bf-label { font-size: 12px; color: #666; }
-  .bf-input { padding: 8px 10px; border: 0.5px solid #2a2a2a; border-radius: 8px; font-size: 14px; background: #000000; color: #e8e2da; width: 100%; font-family: inherit; -webkit-appearance: none; }
+  .bf-input { padding: 8px 10px; border: 0.5px solid #2a2a2a; border-radius: 8px; font-size: 14px; background: #000000; color: #e8e2da; width: 100%; font-family: inherit; -webkit-appearance: none; transition: border-color 0.15s; }
   .bf-input:focus { outline: none; border-color: #D83123; }
+  .bf-select { padding: 8px 10px; border: 0.5px solid #2a2a2a; border-radius: 8px; font-size: 14px; background: #000000; color: #e8e2da; width: 100%; font-family: inherit; -webkit-appearance: none; appearance: none; cursor: pointer; }
+  .bf-select:focus { outline: none; border-color: #D83123; }
+  .bf-saved-hint { font-size: 11px; color: #333; margin-top: 6px; }
+
+  /* ROOF TYPE PILLS */
+  .bf-roof-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .bf-roof-pill { padding: 5px 12px; border: 0.5px solid #2a2a2a; border-radius: 20px; background: transparent; color: #666; font-size: 12px; cursor: pointer; font-family: inherit; white-space: nowrap; transition: all 0.15s; }
+  .bf-roof-pill:hover { border-color: #D83123; color: #D83123; }
+  .bf-roof-pill.active { border-color: #D83123; background: #1a0000; color: #D83123; }
+
+  /* TIER TOGGLE */
+  .bf-tier-wrap { margin-bottom: 1rem; }
+  .bf-tier-label { font-size: 11px; color: #555; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .bf-tier-btns { display: flex; gap: 0; border: 0.5px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
+  .bf-tier-btn { flex: 1; padding: 8px 6px; background: transparent; border: none; color: #555; font-size: 12px; font-weight: 500; cursor: pointer; font-family: inherit; text-align: center; transition: all 0.15s; border-right: 0.5px solid #2a2a2a; }
+  .bf-tier-btn:last-child { border-right: none; }
+  .bf-tier-btn:hover { background: #1a1a1a; color: #e8e2da; }
+  .bf-tier-btn.active { background: #D83123; color: #fff; }
+  .bf-tier-note { font-size: 11px; color: #444; margin-top: 6px; }
 
   /* QUICK ADD */
   .bf-quick-title { font-size: 11px; color: #555; margin-bottom: 8px; }
   .bf-quick-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-  .bf-quick-btn { padding: 5px 10px; border: 0.5px solid #2a2a2a; border-radius: 20px; background: transparent; color: #888; font-size: 11px; cursor: pointer; font-family: inherit; white-space: nowrap; }
+  .bf-quick-btn { padding: 5px 10px; border: 0.5px solid #2a2a2a; border-radius: 20px; background: transparent; color: #888; font-size: 11px; cursor: pointer; font-family: inherit; white-space: nowrap; transition: all 0.15s; }
   .bf-quick-btn:hover { border-color: #D83123; color: #D83123; }
 
   /* LINE ITEMS */
   .bf-table-header { display: grid; grid-template-columns: 3fr 1fr 1fr 1fr 40px; gap: 8px; padding: 0 8px 8px; border-bottom: 0.5px solid #222; margin-bottom: 8px; }
   .bf-table-header span { font-size: 11px; font-weight: 500; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
   .bf-line { display: grid; grid-template-columns: 3fr 1fr 1fr 1fr 40px; gap: 8px; align-items: center; margin-bottom: 8px; }
-  .bf-line input { padding: 7px 10px; border: 0.5px solid #222; border-radius: 8px; font-size: 13px; background: #000000; color: #e8e2da; width: 100%; font-family: inherit; -webkit-appearance: none; }
+  .bf-line input { padding: 7px 10px 7px 12px; border: 0.5px solid #222; border-radius: 8px; font-size: 13px; background: #000000; color: #e8e2da; width: 100%; font-family: inherit; -webkit-appearance: none; transition: border-color 0.15s; }
   .bf-line input:focus { outline: none; border-color: #D83123; }
-  .bf-remove { width: 28px; height: 28px; border-radius: 50%; border: 0.5px solid #2a2a2a; background: transparent; cursor: pointer; color: #555; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .bf-remove { width: 28px; height: 28px; border-radius: 50%; border: 0.5px solid #2a2a2a; background: transparent; cursor: pointer; color: #555; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
   .bf-remove:hover { border-color: #D83123; color: #D83123; }
-  .bf-add-btn { margin-top: 8px; padding: 7px 14px; background: transparent; border: 0.5px dashed #2a2a2a; border-radius: 8px; color: #555; font-size: 13px; cursor: pointer; width: 100%; font-family: inherit; }
+  .bf-add-btn { margin-top: 8px; padding: 7px 14px; background: transparent; border: 0.5px dashed #2a2a2a; border-radius: 8px; color: #555; font-size: 13px; cursor: pointer; width: 100%; font-family: inherit; transition: all 0.15s; }
   .bf-add-btn:hover { border-color: #D83123; color: #D83123; }
 
   /* TOTALS */
   .bf-totals { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; padding-top: 12px; border-top: 0.5px solid #222; margin-top: 16px; }
   .bf-total-row { display: flex; gap: 32px; font-size: 14px; align-items: center; }
   .bf-total-row .lbl { color: #666; }
-  .bf-total-row .val { min-width: 80px; text-align: right; color: #e8e2da; }
+  .bf-total-row .val { min-width: 90px; text-align: right; color: #e8e2da; }
   .bf-total-final { display: flex; gap: 32px; font-size: 16px; font-weight: 500; margin-top: 4px; padding-top: 8px; border-top: 2px solid #D83123; }
   .bf-total-final .lbl { color: #e8e2da; }
-  .bf-total-final .val { min-width: 80px; text-align: right; color: #D83123; }
+  .bf-total-final .val { min-width: 90px; text-align: right; color: #D83123; }
   .tax-input { width: 60px; padding: 4px 8px; border: 0.5px solid #2a2a2a; border-radius: 4px; font-size: 13px; background: #000000; color: #e8e2da; font-family: inherit; -webkit-appearance: none; }
   .tax-input:focus { outline: none; border-color: #D83123; }
+
+  /* DEPOSIT ROW */
+  .bf-deposit-row { display: flex; gap: 32px; font-size: 13px; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid #1a1a1a; }
+  .bf-deposit-row .lbl { color: #555; }
+  .bf-deposit-row .val { min-width: 90px; text-align: right; color: #e8e2da; }
+  .deposit-pct-input { width: 50px; padding: 4px 8px; border: 0.5px solid #2a2a2a; border-radius: 4px; font-size: 12px; background: #000000; color: #e8e2da; font-family: inherit; -webkit-appearance: none; }
+  .deposit-pct-input:focus { outline: none; border-color: #D83123; }
+  .bf-balance-row { display: flex; gap: 32px; font-size: 13px; align-items: center; margin-top: 4px; }
+  .bf-balance-row .lbl { color: #555; }
+  .bf-balance-row .val { min-width: 90px; text-align: right; color: #888; }
 
   /* ACTIONS */
   .bf-actions { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; }
   .bf-actions-right { display: flex; gap: 12px; }
-  .bf-btn-reset { padding: 10px 16px; border: 0.5px solid #333; border-radius: 8px; background: transparent; color: #555; font-size: 13px; cursor: pointer; font-family: inherit; }
+  .bf-btn-reset { padding: 10px 16px; border: 0.5px solid #333; border-radius: 8px; background: transparent; color: #555; font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
   .bf-btn-reset:hover { border-color: #666; color: #888; }
-  .bf-btn-secondary { padding: 10px 20px; border: 0.5px solid #2a2a2a; border-radius: 8px; background: transparent; color: #e8e2da; font-size: 14px; cursor: pointer; font-family: inherit; }
+  .bf-btn-secondary { padding: 10px 20px; border: 0.5px solid #2a2a2a; border-radius: 8px; background: transparent; color: #e8e2da; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
   .bf-btn-secondary:hover { background: #1a1a1a; }
-  .bf-btn-primary { padding: 10px 24px; border: none; border-radius: 8px; background: #D83123; color: #fff; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: inherit; }
+  .bf-btn-primary { padding: 10px 24px; border: none; border-radius: 8px; background: #D83123; color: #fff; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: inherit; transition: background 0.15s; }
   .bf-btn-primary:hover { background: #b30000; }
 
   /* PREVIEW OVERLAY */
-  .overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); display: none; align-items: flex-start; justify-content: center; z-index: 100; padding: 2rem 1rem; overflow-y: auto; }
+  .overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); display: none; align-items: flex-start; justify-content: center; z-index: 100; padding: 2rem 1rem; overflow-y: auto; }
   .preview-box { background: #111; border-radius: 10px; padding: 2rem; max-width: 600px; width: 100%; border: 0.5px solid #222; margin: auto; }
   .preview-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #D83123; }
   .preview-company { font-size: 18px; font-weight: 500; color: #e8e2da; }
@@ -84,6 +132,10 @@
   .preview-close { padding: 8px 18px; border: 0.5px solid #2a2a2a; border-radius: 8px; background: transparent; color: #e8e2da; cursor: pointer; font-size: 13px; font-family: inherit; margin-top: 1rem; }
   .preview-close:hover { background: #1a1a1a; }
 
+  /* TOAST */
+  .bf-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: #1a1a1a; color: #e8e2da; padding: 10px 20px; border-radius: 8px; font-size: 13px; border: 0.5px solid #333; opacity: 0; transition: all 0.3s ease; z-index: 200; white-space: nowrap; }
+  .bf-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
   /* MOBILE */
   @media (max-width: 600px) {
     .bf-grid-2, .bf-grid-3 { grid-template-columns: 1fr; }
@@ -93,11 +145,16 @@
     .bf-line input { font-size: 12px; padding: 6px 6px; }
     .bf-actions { flex-direction: column; align-items: stretch; }
     .bf-actions-right { justify-content: flex-end; }
+    .bf-tier-btn { font-size: 11px; padding: 7px 4px; }
+    .bf-header-right { flex-direction: column; align-items: flex-end; gap: 6px; }
   }
 </style>
 </head>
 <body>
 <div class="bf-wrap">
+
+  <!-- TOAST -->
+  <div class="bf-toast" id="toast"></div>
 
   <!-- HEADER -->
   <div class="bf-header">
@@ -105,21 +162,38 @@
       <div class="bf-logo-icon"><span class="bf-b">B</span><span class="bf-f">F</span></div>
       <div style="display:flex;align-items:baseline"><span class="bf-bid">Bid</span><span class="bf-forge">Forge</span></div>
     </div>
-    <div class="bf-badge">Roofing Estimate</div>
+    <div class="bf-header-right">
+      <div class="bf-status-wrap status-draft" id="statusWrap">
+        <div class="bf-status-dot" id="statusDot"></div>
+        <select class="bf-status-select" id="statusSelect" onchange="updateStatus()">
+          <option value="draft">Draft</option>
+          <option value="sent">Sent</option>
+          <option value="approved">Approved</option>
+        </select>
+      </div>
+      <div class="bf-badge">Roofing Estimate</div>
+    </div>
   </div>
+
+  <!-- AUTOSAVE INDICATOR -->
+  <div class="bf-autosave" id="autosaveMsg"></div>
 
   <!-- YOUR BUSINESS -->
   <div class="bf-section">
-    <div class="bf-section-title">Your Business</div>
+    <div class="bf-section-title">
+      Your Business
+      <button class="bf-section-action" onclick="clearBusinessInfo()">Clear saved info</button>
+    </div>
     <div class="bf-grid-2">
-      <div class="bf-field"><label class="bf-label">Company name</label><input class="bf-input" id="companyName" placeholder="e.g. Iron Ridge Roofing" /></div>
-      <div class="bf-field"><label class="bf-label">License number</label><input class="bf-input" id="licenseNum" placeholder="e.g. CA-ROO-88421" /></div>
+      <div class="bf-field"><label class="bf-label">Company name</label><input class="bf-input" id="companyName" placeholder="e.g. Iron Ridge Roofing" oninput="scheduleAutoSave()" /></div>
+      <div class="bf-field"><label class="bf-label">License number</label><input class="bf-input" id="licenseNum" placeholder="e.g. CA-ROO-88421" oninput="scheduleAutoSave()" /></div>
     </div>
     <div class="bf-grid-3">
-      <div class="bf-field"><label class="bf-label">Phone</label><input class="bf-input" id="phone" placeholder="(555) 000-0000" /></div>
-      <div class="bf-field"><label class="bf-label">Email</label><input class="bf-input" id="email" placeholder="you@company.com" /></div>
-      <div class="bf-field"><label class="bf-label">City, State</label><input class="bf-input" id="location" placeholder="e.g. Phoenix, AZ" /></div>
+      <div class="bf-field"><label class="bf-label">Phone</label><input class="bf-input" id="phone" placeholder="(555) 000-0000" oninput="scheduleAutoSave()" /></div>
+      <div class="bf-field"><label class="bf-label">Email</label><input class="bf-input" id="email" placeholder="you@company.com" oninput="scheduleAutoSave()" /></div>
+      <div class="bf-field"><label class="bf-label">City, State</label><input class="bf-input" id="location" placeholder="e.g. Phoenix, AZ" oninput="scheduleAutoSave()" /></div>
     </div>
+    <div class="bf-saved-hint" id="savedHint"></div>
   </div>
 
   <!-- CLIENT INFO -->
@@ -136,6 +210,52 @@
     </div>
   </div>
 
+  <!-- JOB DETAILS -->
+  <div class="bf-section">
+    <div class="bf-section-title">Job Details</div>
+
+    <div class="bf-grid-2" style="margin-bottom:0">
+      <div class="bf-field">
+        <label class="bf-label">Roof type</label>
+        <select class="bf-select" id="roofType">
+          <option value="">Select roof type</option>
+          <option value="Gable">Gable</option>
+          <option value="Hip">Hip</option>
+          <option value="Flat / Low-slope">Flat / Low-slope</option>
+          <option value="Shed">Shed</option>
+          <option value="Gambrel">Gambrel</option>
+          <option value="Mansard">Mansard</option>
+          <option value="Dutch Gable">Dutch Gable</option>
+          <option value="Mixed">Mixed</option>
+        </select>
+      </div>
+      <div class="bf-field">
+        <label class="bf-label">Job type</label>
+        <select class="bf-select" id="jobType">
+          <option value="">Select job type</option>
+          <option value="Full Replacement">Full Replacement</option>
+          <option value="Repair">Repair</option>
+          <option value="New Construction">New Construction</option>
+          <option value="Insurance Claim">Insurance Claim (Storm)</option>
+          <option value="Re-roof (Overlay)">Re-roof (Overlay)</option>
+          <option value="Inspection Only">Inspection Only</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- TIER SELECTOR -->
+    <div class="bf-tier-wrap" style="margin-top:1rem">
+      <div class="bf-tier-label">Proposal Tier</div>
+      <div class="bf-tier-btns">
+        <button class="bf-tier-btn active" id="tier-standard" onclick="setTier('standard')">Standard</button>
+        <button class="bf-tier-btn" id="tier-good" onclick="setTier('good')">Good</button>
+        <button class="bf-tier-btn" id="tier-better" onclick="setTier('better')">Better</button>
+        <button class="bf-tier-btn" id="tier-best" onclick="setTier('best')">Best</button>
+      </div>
+      <div class="bf-tier-note" id="tierNote">Single estimate — standard proposal.</div>
+    </div>
+  </div>
+
   <!-- LINE ITEMS -->
   <div class="bf-section">
     <div class="bf-section-title">Line Items</div>
@@ -145,12 +265,15 @@
     <div class="bf-quick-btns">
       <button class="bf-quick-btn" onclick="addLine('Shingle removal & haul away','','')">+ Shingle Removal</button>
       <button class="bf-quick-btn" onclick="addLine('Remove & replace asphalt shingles','','')">+ Shingle Install</button>
-      <button class="bf-quick-btn" onclick="addLine('Underlayment','','')">+ Underlayment</button>
+      <button class="bf-quick-btn" onclick="addLine('Synthetic underlayment','','')">+ Underlayment</button>
       <button class="bf-quick-btn" onclick="addLine('Ice & water shield','','')">+ Ice Shield</button>
       <button class="bf-quick-btn" onclick="addLine('Ridge cap installation','','')">+ Ridge Cap</button>
       <button class="bf-quick-btn" onclick="addLine('Step flashing & counter flashing','','')">+ Flashing</button>
       <button class="bf-quick-btn" onclick="addLine('Drip edge installation','','')">+ Drip Edge</button>
-      <button class="bf-quick-btn" onclick="addLine('Labor','','')">+ Labor</button>
+      <button class="bf-quick-btn" onclick="addLine('Pipe boots & penetration seals','','')">+ Pipe Boots</button>
+      <button class="bf-quick-btn" onclick="addLine('Decking repair / replacement','','')">+ Decking</button>
+      <button class="bf-quick-btn" onclick="addLine('Roof ventilation','','')">+ Ventilation</button>
+      <button class="bf-quick-btn" onclick="addLine('Labor & installation','','')">+ Labor</button>
       <button class="bf-quick-btn" onclick="addLine('Permit fee','1','')">+ Permit</button>
       <button class="bf-quick-btn" onclick="addLine('Dumpster / debris removal','1','')">+ Dumpster</button>
     </div>
@@ -163,9 +286,22 @@
 
     <div class="bf-totals">
       <div class="bf-total-row"><span class="lbl">Subtotal</span><span class="val" id="subtotal">$0.00</span></div>
-      <div class="bf-total-row"><span class="lbl">Tax rate (%)</span><input id="taxRate" type="number" value="0" min="0" max="30" step="0.1" class="tax-input" oninput="recalc()" /></div>
+      <div class="bf-total-row">
+        <span class="lbl">Tax rate (%)</span>
+        <input id="taxRate" type="number" value="0" min="0" max="30" step="0.1" class="tax-input" oninput="recalc()" />
+      </div>
       <div class="bf-total-row"><span class="lbl">Tax</span><span class="val" id="taxAmt">$0.00</span></div>
       <div class="bf-total-final"><span class="lbl">Total</span><span class="val" id="grandTotal">$0.00</span></div>
+
+      <!-- DEPOSIT -->
+      <div class="bf-deposit-row">
+        <span class="lbl">Deposit required (<input type="number" class="deposit-pct-input" id="depositPct" value="50" min="0" max="100" oninput="recalc()" />%)</span>
+        <span class="val" id="depositAmt">$0.00</span>
+      </div>
+      <div class="bf-balance-row">
+        <span class="lbl">Balance due on completion</span>
+        <span class="val" id="balanceAmt">$0.00</span>
+      </div>
     </div>
   </div>
 
@@ -192,7 +328,7 @@
 </div>
 
 <!-- PREVIEW OVERLAY -->
-<div class="overlay" id="overlay">
+<div class="overlay" id="overlay" onclick="closePreviewOnBg(event)">
   <div class="preview-box">
     <div class="preview-header">
       <div><div class="preview-company" id="pv-company"></div><div class="preview-meta" id="pv-meta"></div></div>
@@ -203,6 +339,7 @@
       <div id="pv-client" style="font-weight:500;font-size:14px;color:#e8e2da"></div>
       <div id="pv-addr" style="color:#666;font-size:13px"></div>
     </div>
+    <div id="pv-jobtier" style="font-size:12px;color:#555;margin-bottom:1rem"></div>
     <table class="preview-table">
       <thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Amount</th></tr></thead>
       <tbody id="pv-lines"></tbody>
@@ -211,6 +348,8 @@
       <div style="display:flex;gap:24px;color:#e8e2da"><span style="color:#666">Subtotal</span><span id="pv-sub"></span></div>
       <div style="display:flex;gap:24px;color:#e8e2da"><span style="color:#666">Tax</span><span id="pv-tax"></span></div>
       <div class="preview-grand"><span>Total</span><span id="pv-grand"></span></div>
+      <div style="display:flex;gap:24px;font-size:12px;color:#666;margin-top:6px"><span>Deposit Required</span><span id="pv-deposit"></span></div>
+      <div style="display:flex;gap:24px;font-size:12px;color:#555"><span>Balance on Completion</span><span id="pv-balance"></span></div>
     </div>
     <div style="margin-top:1rem;font-size:12px;color:#555;border-top:0.5px solid #222;padding-top:12px" id="pv-terms"></div>
     <div style="text-align:right"><button class="preview-close" onclick="closePreview()">Close</button></div>
@@ -219,7 +358,99 @@
 
 <script>
 var lineCount = 0;
+var autoSaveTimer = null;
+var currentTier = 'standard';
 
+/* ---- AUTOSAVE ---- */
+function scheduleAutoSave() {
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(saveBusinessInfo, 800);
+}
+
+function saveBusinessInfo() {
+  var data = {
+    companyName: document.getElementById('companyName').value,
+    licenseNum:  document.getElementById('licenseNum').value,
+    phone:       document.getElementById('phone').value,
+    email:       document.getElementById('email').value,
+    location:    document.getElementById('location').value
+  };
+  try {
+    localStorage.setItem('bf_business', JSON.stringify(data));
+    showAutoSave('Business info saved');
+  } catch(e) {}
+}
+
+function loadBusinessInfo() {
+  try {
+    var raw = localStorage.getItem('bf_business');
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    if (data.companyName) document.getElementById('companyName').value = data.companyName;
+    if (data.licenseNum)  document.getElementById('licenseNum').value  = data.licenseNum;
+    if (data.phone)       document.getElementById('phone').value       = data.phone;
+    if (data.email)       document.getElementById('email').value       = data.email;
+    if (data.location)    document.getElementById('location').value    = data.location;
+    if (data.companyName) {
+      document.getElementById('savedHint').textContent = '✓ Loaded your saved business info';
+    }
+  } catch(e) {}
+}
+
+function clearBusinessInfo() {
+  try { localStorage.removeItem('bf_business'); } catch(e) {}
+  document.getElementById('companyName').value = '';
+  document.getElementById('licenseNum').value = '';
+  document.getElementById('phone').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('location').value = '';
+  document.getElementById('savedHint').textContent = '';
+  showToast('Business info cleared');
+}
+
+function showAutoSave(msg) {
+  var el = document.getElementById('autosaveMsg');
+  el.textContent = '✓ ' + msg;
+  el.classList.add('saved');
+  setTimeout(function() {
+    el.classList.remove('saved');
+    setTimeout(function() { el.textContent = ''; }, 300);
+  }, 2000);
+}
+
+/* ---- TOAST ---- */
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2500);
+}
+
+/* ---- STATUS ---- */
+function updateStatus() {
+  var val = document.getElementById('statusSelect').value;
+  var wrap = document.getElementById('statusWrap');
+  wrap.className = 'bf-status-wrap status-' + val;
+}
+
+/* ---- TIER ---- */
+var tierNotes = {
+  standard: 'Single estimate — standard proposal.',
+  good: 'Good tier — entry-level option for budget-conscious clients.',
+  better: 'Better tier — mid-range materials and value.',
+  best: 'Best tier — premium materials and full warranty package.'
+};
+
+function setTier(tier) {
+  currentTier = tier;
+  ['standard','good','better','best'].forEach(function(t) {
+    document.getElementById('tier-' + t).classList.remove('active');
+  });
+  document.getElementById('tier-' + tier).classList.add('active');
+  document.getElementById('tierNote').textContent = tierNotes[tier];
+}
+
+/* ---- LINE ITEMS ---- */
 function addLine(desc, qty, price) {
   lineCount++;
   var id = lineCount;
@@ -231,10 +462,9 @@ function addLine(desc, qty, price) {
     '<input type="number" placeholder="0" value="' + escHtml(qty||'') + '" oninput="recalc()" class="line-qty" min="0" />' +
     '<input type="number" placeholder="0.00" value="' + escHtml(price||'') + '" oninput="recalc()" class="line-price" min="0" step="0.01" />' +
     '<input readonly value="$0.00" class="line-amt" style="background:#050505;color:#555;border-color:#1a1a1a" />' +
-    '<button class="bf-remove" onclick="removeLine(' + id + ')">&#215;</button>';
+    '<button class="bf-remove" onclick="removeLine(' + id + ')" title="Remove">&#215;</button>';
   document.getElementById('lineItems').appendChild(div);
   recalc();
-  // Focus the qty field if desc was pre-filled, else focus desc
   var newLine = document.getElementById('line-' + id);
   if (desc) {
     newLine.querySelector('.line-qty').focus();
@@ -265,42 +495,67 @@ function recalc() {
   }
   var taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
   var tax = sub * taxRate / 100;
-  document.getElementById('subtotal').textContent = '$' + sub.toFixed(2);
-  document.getElementById('taxAmt').textContent = '$' + tax.toFixed(2);
-  document.getElementById('grandTotal').textContent = '$' + (sub + tax).toFixed(2);
+  var total = sub + tax;
+  var depositPct = parseFloat(document.getElementById('depositPct').value) || 0;
+  var deposit = total * depositPct / 100;
+  var balance = total - deposit;
+
+  document.getElementById('subtotal').textContent    = '$' + sub.toFixed(2);
+  document.getElementById('taxAmt').textContent      = '$' + tax.toFixed(2);
+  document.getElementById('grandTotal').textContent  = '$' + total.toFixed(2);
+  document.getElementById('depositAmt').textContent  = '$' + deposit.toFixed(2);
+  document.getElementById('balanceAmt').textContent  = '$' + balance.toFixed(2);
 }
 
+/* ---- FORM DATA ---- */
 function getFormData() {
   var lines = [];
   var lineEls = document.querySelectorAll('.bf-line');
   for (var i = 0; i < lineEls.length; i++) {
     var line = lineEls[i];
-    var desc = line.querySelector('.line-desc').value;
-    var qty = line.querySelector('.line-qty').value;
+    var desc  = line.querySelector('.line-desc').value;
+    var qty   = line.querySelector('.line-qty').value;
     var price = line.querySelector('.line-price').value;
-    var amt = line.querySelector('.line-amt').value;
+    var amt   = line.querySelector('.line-amt').value;
     if (desc && (parseFloat(price) > 0 || parseFloat(qty) > 0)) lines.push({desc:desc, qty:qty, price:price, amt:amt});
   }
+  var taxRate    = document.getElementById('taxRate').value || '0';
+  var depositPct = document.getElementById('depositPct').value || '50';
+  var subtotal   = document.getElementById('subtotal').textContent;
+  var taxAmt     = document.getElementById('taxAmt').textContent;
+  var grandTotal = document.getElementById('grandTotal').textContent;
+  var depositAmt = document.getElementById('depositAmt').textContent;
+  var balanceAmt = document.getElementById('balanceAmt').textContent;
+  var roofType   = document.getElementById('roofType').value;
+  var jobType    = document.getElementById('jobType').value;
+
   return {
-    company:   document.getElementById('companyName').value || 'Your Company',
-    license:   document.getElementById('licenseNum').value,
-    phone:     document.getElementById('phone').value,
-    email:     document.getElementById('email').value,
-    location:  document.getElementById('location').value,
-    client:    document.getElementById('clientName').value || 'Client Name',
-    address:   document.getElementById('jobAddress').value,
-    estNum:    document.getElementById('estNum').value || 'EST-001',
-    date:      document.getElementById('estDate').value,
-    validDays: document.getElementById('validDays').value || '30',
-    terms:     document.getElementById('terms').value,
-    lines:     lines,
-    taxRate:   document.getElementById('taxRate').value || '0',
-    subtotal:  document.getElementById('subtotal').textContent,
-    tax:       document.getElementById('taxAmt').textContent,
-    total:     document.getElementById('grandTotal').textContent
+    company:    document.getElementById('companyName').value || 'Your Company',
+    license:    document.getElementById('licenseNum').value,
+    phone:      document.getElementById('phone').value,
+    email:      document.getElementById('email').value,
+    location:   document.getElementById('location').value,
+    client:     document.getElementById('clientName').value || 'Client Name',
+    address:    document.getElementById('jobAddress').value,
+    estNum:     document.getElementById('estNum').value || 'EST-001',
+    date:       document.getElementById('estDate').value,
+    validDays:  document.getElementById('validDays').value || '30',
+    terms:      document.getElementById('terms').value,
+    lines:      lines,
+    taxRate:    taxRate,
+    subtotal:   subtotal,
+    tax:        taxAmt,
+    total:      grandTotal,
+    depositPct: depositPct,
+    deposit:    depositAmt,
+    balance:    balanceAmt,
+    roofType:   roofType,
+    jobType:    jobType,
+    tier:       currentTier
   };
 }
 
+/* ---- PREVIEW ---- */
 function showPreview() {
   var d = getFormData();
   document.getElementById('pv-company').textContent = d.company;
@@ -312,6 +567,13 @@ function showPreview() {
   document.getElementById('pv-est').textContent = '#' + d.estNum + (d.date ? ' · ' + d.date : '');
   document.getElementById('pv-client').textContent = d.client;
   document.getElementById('pv-addr').textContent = d.address;
+
+  var jobTierParts = [];
+  if (d.roofType) jobTierParts.push(d.roofType);
+  if (d.jobType)  jobTierParts.push(d.jobType);
+  if (d.tier !== 'standard') jobTierParts.push(d.tier.charAt(0).toUpperCase() + d.tier.slice(1) + ' Tier');
+  document.getElementById('pv-jobtier').textContent = jobTierParts.join(' · ');
+
   var rows = '';
   for (var i = 0; i < d.lines.length; i++) {
     var l = d.lines[i];
@@ -319,37 +581,47 @@ function showPreview() {
   }
   if (!rows) rows = '<tr><td colspan="4" style="color:#555;text-align:center;padding:1rem">No line items added</td></tr>';
   document.getElementById('pv-lines').innerHTML = rows;
-  document.getElementById('pv-sub').textContent = d.subtotal;
-  document.getElementById('pv-tax').textContent = d.tax;
-  document.getElementById('pv-grand').textContent = d.total;
-  document.getElementById('pv-terms').textContent = d.terms;
-  document.getElementById('overlay').style.display = 'flex';
+  document.getElementById('pv-sub').textContent     = d.subtotal;
+  document.getElementById('pv-tax').textContent     = d.tax;
+  document.getElementById('pv-grand').textContent   = d.total;
+  document.getElementById('pv-deposit').textContent = d.deposit + ' (' + d.depositPct + '%)';
+  document.getElementById('pv-balance').textContent = d.balance;
+  document.getElementById('pv-terms').textContent   = d.terms;
+  document.getElementById('overlay').style.display  = 'flex';
 }
 
 function closePreview() {
   document.getElementById('overlay').style.display = 'none';
 }
 
+function closePreviewOnBg(e) {
+  if (e.target === document.getElementById('overlay')) closePreview();
+}
+
+/* ---- RESET ---- */
 function resetForm() {
-  if (!confirm('Start over? This will clear everything.')) return;
-  document.getElementById('companyName').value = '';
-  document.getElementById('licenseNum').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('location').value = '';
-  document.getElementById('clientName').value = '';
-  document.getElementById('jobAddress').value = '';
-  document.getElementById('estNum').value = '';
-  document.getElementById('estDate').value = getTodayString();
-  document.getElementById('validDays').value = '';
-  document.getElementById('terms').value = '';
-  document.getElementById('taxRate').value = '0';
+  if (!confirm('Start over? This will clear the current estimate.')) return;
+  document.getElementById('clientName').value  = '';
+  document.getElementById('jobAddress').value  = '';
+  document.getElementById('estNum').value      = '';
+  document.getElementById('estDate').value     = getTodayString();
+  document.getElementById('validDays').value   = '30';
+  document.getElementById('terms').value       = '';
+  document.getElementById('taxRate').value     = '0';
+  document.getElementById('depositPct').value  = '50';
+  document.getElementById('roofType').value    = '';
+  document.getElementById('jobType').value     = '';
+  document.getElementById('statusSelect').value = 'draft';
+  updateStatus();
+  setTier('standard');
   document.getElementById('lineItems').innerHTML = '';
   lineCount = 0;
   recalc();
   addLine('','','');
+  showToast('Estimate cleared — your business info was kept');
 }
 
+/* ---- DATE ---- */
 function getTodayString() {
   var now = new Date();
   var m = now.getMonth() + 1;
@@ -358,6 +630,7 @@ function getTodayString() {
   return (m < 10 ? '0'+m : m) + '/' + (d < 10 ? '0'+d : d) + '/' + y;
 }
 
+/* ---- GENERATE PDF ---- */
 function generatePDF() {
   var d = getFormData();
 
@@ -379,14 +652,21 @@ function generatePDF() {
 
   var metaParts = [];
   if (d.license) metaParts.push('Lic #' + d.license);
-  if (d.phone) metaParts.push(d.phone);
-  if (d.email) metaParts.push(d.email);
+  if (d.phone)   metaParts.push(d.phone);
+  if (d.email)   metaParts.push(d.email);
   if (d.location) metaParts.push(d.location);
+
+  var jobDetails = [];
+  if (d.roofType) jobDetails.push('<strong>Roof Type:</strong> ' + escHtml(d.roofType));
+  if (d.jobType)  jobDetails.push('<strong>Job Type:</strong> ' + escHtml(d.jobType));
+  if (d.tier !== 'standard') jobDetails.push('<strong>Tier:</strong> ' + escHtml(d.tier.charAt(0).toUpperCase() + d.tier.slice(1)));
+  var jobDetailsHtml = jobDetails.length ?
+    '<div style="margin-bottom:24px;padding:12px 14px;background:#f9f9f9;border-radius:6px;border-left:3px solid #D83123;font-size:12px;color:#555;line-height:1.8">' + jobDetails.join(' &nbsp;·&nbsp; ') + '</div>' : '';
 
   var termsHtml = '';
   if (d.terms) {
     termsHtml =
-      '<div style="margin-top:28px;padding-top:16px;border-top:1px solid #e8e8e8">' +
+      '<div style="margin-top:24px;padding-top:16px;border-top:1px solid #e8e8e8">' +
       '<div style="font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Terms & Conditions</div>' +
       '<div style="font-size:12px;color:#555;line-height:1.7">' + escHtml(d.terms) + '</div>' +
       '</div>';
@@ -399,16 +679,22 @@ function generatePDF() {
     '*{box-sizing:border-box;margin:0;padding:0}' +
     'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#fff;color:#1a1a1a}' +
     '@media print{.no-print{display:none!important}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}' +
+    '@media screen and (max-width:600px){' +
+    '.pdf-wrap{padding:20px 14px!important}' +
+    '.pdf-header{flex-direction:column;gap:10px}' +
+    '.pdf-header-right{text-align:left!important}' +
+    'table th,table td{padding:7px 6px!important;font-size:11px!important}' +
+    '.pdf-meta{font-size:10px!important;word-break:break-all}' +
+    '}' +
     '</style></head><body>' +
 
     '<div class="no-print" style="background:#1a1a1a;color:#f0ece6;padding:14px 20px;font-size:13px;text-align:center">' +
-    '📄 To save as PDF: tap the <strong>Share</strong> icon below → tap <strong>Print</strong> → pinch out to zoom → tap the Share icon again → <strong>Save to Files</strong>' +
+    '📄 To save as PDF: tap the <strong>Share</strong> icon → tap <strong>Print</strong> → pinch to zoom → Share again → <strong>Save to Files</strong>' +
     '</div>' +
 
-    '<div style="max-width:700px;margin:0 auto;padding:40px 36px">' +
+    '<div class="pdf-wrap" style="max-width:700px;margin:0 auto;padding:40px 36px">' +
 
-    /* Header */
-    '<div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;border-bottom:3px solid #D83123;margin-bottom:28px">' +
+    '<div class="pdf-header" style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:18px;border-bottom:3px solid #D83123;margin-bottom:28px">' +
     '<div>' +
     '<div style="font-size:26px;font-weight:800;letter-spacing:-0.5px"><span style="color:#1a1a1a">Bid</span><span style="color:#D83123">Forge</span></div>' +
     '<div style="font-size:17px;font-weight:700;color:#1a1a1a;margin-top:14px">' + escHtml(d.company) + '</div>' +
@@ -422,61 +708,53 @@ function generatePDF() {
     '</div>' +
     '</div>' +
 
-    /* Prepared for */
-    '<div style="margin-bottom:28px">' +
+    '<div style="margin-bottom:24px">' +
     '<div style="font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Prepared For</div>' +
     '<div style="font-size:16px;font-weight:600;color:#1a1a1a">' + escHtml(d.client) + '</div>' +
     (d.address ? '<div style="font-size:12px;color:#888;margin-top:3px">' + escHtml(d.address) + '</div>' : '') +
     '</div>' +
 
-    /* Line items table */
+    jobDetailsHtml +
+
     '<table style="width:100%;border-collapse:collapse;margin-bottom:20px">' +
     '<thead><tr style="background:#1a1a1a">' +
-    '<th style="padding:10px;text-align:left;font-size:10px;color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;width:46%">Description</th>' +
-    '<th style="padding:10px;text-align:center;font-size:10px;color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;width:14%">Qty</th>' +
+    '<th style="padding:10px;text-align:left;font-size:10px;color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;width:44%">Description</th>' +
+    '<th style="padding:10px;text-align:center;font-size:10px;color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;width:12%">Qty</th>' +
     '<th style="padding:10px;text-align:right;font-size:10px;color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;width:20%">Unit Price</th>' +
     '<th style="padding:10px;text-align:right;font-size:10px;color:#ccc;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;width:20%">Amount</th>' +
     '</tr></thead>' +
     '<tbody>' + lineRows + '</tbody>' +
     '</table>' +
 
-    /* Totals */
     '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">' +
     '<div style="display:flex;gap:40px;font-size:13px"><span style="color:#888">Subtotal</span><span style="font-weight:500;min-width:90px;text-align:right">' + escHtml(d.subtotal) + '</span></div>' +
     '<div style="display:flex;gap:40px;font-size:13px"><span style="color:#888">Tax (' + escHtml(d.taxRate) + '%)</span><span style="font-weight:500;min-width:90px;text-align:right">' + escHtml(d.tax) + '</span></div>' +
     '<div style="display:flex;gap:40px;font-size:17px;font-weight:800;padding-top:12px;border-top:2px solid #D83123;margin-top:4px">' +
     '<span style="color:#D83123">TOTAL</span><span style="color:#D83123;min-width:90px;text-align:right">' + escHtml(d.total) + '</span>' +
     '</div>' +
+    '<div style="display:flex;gap:40px;font-size:13px;margin-top:12px;padding-top:10px;border-top:1px solid #eee">' +
+    '<span style="color:#888">Deposit Required (' + escHtml(d.depositPct) + '%)</span><span style="font-weight:600;min-width:90px;text-align:right;color:#1a1a1a">' + escHtml(d.deposit) + '</span>' +
+    '</div>' +
+    '<div style="display:flex;gap:40px;font-size:13px">' +
+    '<span style="color:#888">Balance Due on Completion</span><span style="font-weight:500;min-width:90px;text-align:right;color:#555">' + escHtml(d.balance) + '</span>' +
+    '</div>' +
     '</div>' +
 
-    /* Terms */
     termsHtml +
 
-    /* SIGNATURE BLOCK */
     '<div style="margin-top:40px;padding:20px;border:1px solid #e0e0e0;border-radius:6px;background:#fafafa">' +
     '<div style="font-size:10px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Authorization & Acceptance</div>' +
     '<div style="font-size:12px;color:#555;margin-bottom:20px;line-height:1.6">By signing below, you authorize ' + escHtml(d.company) + ' to perform the work described in this estimate and agree to the terms stated above.</div>' +
     '<div style="display:flex;gap:32px;flex-wrap:wrap">' +
-    '<div style="flex:2;min-width:200px">' +
-    '<div style="border-bottom:1px solid #888;height:36px;margin-bottom:4px"></div>' +
-    '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px">Customer Signature</div>' +
+    '<div style="flex:2;min-width:200px"><div style="border-bottom:1px solid #888;height:36px;margin-bottom:4px"></div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px">Customer Signature</div></div>' +
+    '<div style="flex:1;min-width:120px"><div style="border-bottom:1px solid #888;height:36px;margin-bottom:4px"></div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px">Date</div></div>' +
     '</div>' +
-    '<div style="flex:1;min-width:120px">' +
-    '<div style="border-bottom:1px solid #888;height:36px;margin-bottom:4px"></div>' +
-    '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px">Date</div>' +
-    '</div>' +
-    '</div>' +
-    '<div style="margin-top:16px">' +
-    '<div style="border-bottom:1px solid #888;height:36px;margin-bottom:4px"></div>' +
-    '<div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px">Print Name</div>' +
-    '</div>' +
+    '<div style="margin-top:16px"><div style="border-bottom:1px solid #888;height:36px;margin-bottom:4px"></div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:0.5px">Print Name</div></div>' +
     '</div>' +
 
-    /* Footer */
     '<div style="margin-top:32px;padding-top:16px;border-top:1px solid #eee;text-align:center;font-size:10px;color:#ccc">' +
     'Generated by BidForge &nbsp;·&nbsp; getbidforge.com' +
     '</div>' +
-
     '</div></body></html>';
 
   var win = window.open('', '_blank');
@@ -488,8 +766,10 @@ function generatePDF() {
   win.document.close();
 }
 
+/* ---- INIT ---- */
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('estDate').value = getTodayString();
+  loadBusinessInfo();
+  document.getElementById('estDate').value   = getTodayString();
   document.getElementById('validDays').value = '30';
   addLine('','','');
 });
