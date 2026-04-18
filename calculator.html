@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roofing Profit Calculator — Free Tool by BidForge</title>
+<meta name="description" content="Free roofing profit calculator. Enter your job costs and see exactly what to charge at 15%, 20%, and 25% margin. Built for roofing contractors.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    color: #f0ece6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 0.5px solid #1e1e1e;
+    position: sticky;
+    top: 0;
+    background: #000;
+    z-index: 100;
+  }
+  .nav-logo { display: flex; align-items: baseline; gap: 0; }
+  .nav-bid { font-size: 18px; font-weight: 700; color: #f0ece6; letter-spacing: -0.5px; }
+  .nav-forge { font-size: 18px; font-weight: 300; color: #D83123; letter-spacing: -0.5px; }
+  .nav-tag { font-size: 11px; color: #444; margin-left: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .nav-cta {
+    padding: 8px 18px;
+    background: #D83123;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: #b00000; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #D83123;
+    border: 0.5px solid #2a0000;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 span { color: #D83123; }
+  .hero-sub {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .hero-free {
+    font-size: 12px;
+    color: #444;
+    margin-top: 0.5rem;
+  }
+
+  /* CALCULATOR */
+  .calc-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .calc-section {
+    background: #111;
+    border: 0.5px solid #222;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .calc-section-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.25rem;
+  }
+
+  .field { margin-bottom: 1rem; }
+  .field:last-child { margin-bottom: 0; }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .input-wrap {
+    position: relative;
+  }
+  .input-wrap .prefix {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #555;
+    pointer-events: none;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    padding: 10px 10px 10px 24px;
+    background: #000;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 8px;
+    color: #f0ece6;
+    font-size: 15px;
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="number"]:focus {
+    outline: none;
+    border-color: #D83123;
+  }
+  input[type="number"]::placeholder { color: #333; }
+
+  /* RESULTS */
+  .results {
+    background: #111;
+    border: 0.5px solid #222;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .results-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.25rem;
+  }
+
+  .result-card {
+    background: #000;
+    border: 0.5px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+  .result-card:last-child { margin-bottom: 0; }
+  .result-card.highlight {
+    border-color: #D83123;
+    background: #0a0000;
+  }
+
+  .result-left {}
+  .result-margin {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .result-card.highlight .result-margin { color: #D83123; }
+  .result-label {
+    font-size: 13px;
+    color: #888;
+  }
+  .result-card.highlight .result-label { color: #aaa; }
+
+  .result-right { text-align: right; }
+  .result-charge {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f0ece6;
+    letter-spacing: -0.5px;
+  }
+  .result-card.highlight .result-charge { color: #D83123; }
+  .result-profit {
+    font-size: 12px;
+    color: #555;
+    margin-top: 2px;
+  }
+  .result-card.highlight .result-profit { color: #888; }
+
+  /* BREAKDOWN */
+  .breakdown {
+    background: #000;
+    border: 0.5px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+  .breakdown-title {
+    font-size: 11px;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 0.5px solid #111;
+    color: #666;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row .val { color: #f0ece6; }
+  .breakdown-row.total {
+    color: #f0ece6;
+    font-weight: 500;
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 0.5px solid #2a2a2a;
+    border-bottom: none;
+  }
+
+  /* EMPTY STATE */
+  .empty {
+    text-align: center;
+    padding: 2rem;
+    color: #333;
+    font-size: 14px;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: #141414;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .cta-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #D83123;
+    margin-bottom: 0.75rem;
+  }
+  .cta-headline {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .cta-sub {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    background: #D83123;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  .cta-btn:hover { background: #b00000; }
+  .cta-note {
+    font-size: 12px;
+    color: #333;
+    margin-top: 0.75rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 0.5px solid #111;
+    font-size: 12px;
+    color: #333;
+  }
+  footer a { color: #D83123; text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 30px; }
+    .field-row { grid-template-columns: 1fr; }
+    nav { padding: 1rem; }
+    .nav-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div class="nav-logo"><span class="nav-bid">Bid</span><span class="nav-forge">Forge</span></div>
+    <span class="nav-tag">Free Tool</span>
+  </div>
+  <a class="nav-cta" href="https://www.getbidforge.com">Get BidForge — $27</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Free for roofing contractors</div>
+  <h1>Know Exactly What<br>To <span>Charge.</span></h1>
+  <p class="hero-sub">Enter your job costs and see what to charge at 15%, 20%, and 25% margin. Stop underbidding.</p>
+  <p class="hero-free">100% free. No signup required.</p>
+</div>
+
+<div class="calc-wrap">
+
+  <!-- INPUTS -->
+  <div class="calc-section">
+    <div class="calc-section-title">Job Costs</div>
+
+    <div class="field">
+      <label>Materials</label>
+      <div class="input-wrap">
+        <span class="prefix">$</span>
+        <input type="number" id="materials" placeholder="0" min="0" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Labor</label>
+      <div class="input-wrap">
+        <span class="prefix">$</span>
+        <input type="number" id="labor" placeholder="0" min="0" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Disposal / Dumpster</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="disposal" placeholder="0" min="0" oninput="calculate()">
+        </div>
+      </div>
+      <div class="field">
+        <label>Permits</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="permits" placeholder="0" min="0" oninput="calculate()">
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Subcontractors</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="subs" placeholder="0" min="0" oninput="calculate()">
+        </div>
+      </div>
+      <div class="field">
+        <label>Other Costs</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="other" placeholder="0" min="0" oninput="calculate()">
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Overhead % <span style="color:#444">(office, insurance, fuel — typically 10-15%)</span></label>
+      <div class="input-wrap">
+        <span class="prefix" style="left:auto;right:10px;font-size:13px">%</span>
+        <input type="number" id="overhead" value="10" min="0" max="99" style="padding-left:10px;padding-right:28px" oninput="calculate()">
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results">
+    <div class="results-title">What to Charge</div>
+    <div id="results-content">
+      <div class="empty">Enter your job costs above to see your numbers.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">Built for roofers</div>
+    <div class="cta-headline">Now turn that number into a<br>professional proposal.</div>
+    <p class="cta-sub">BidForge generates a clean PDF estimate from your phone in under 2 minutes. Send it to your client before you leave the driveway.</p>
+    <a class="cta-btn" href="https://www.getbidforge.com">See BidForge — $27 one time</a>
+    <p class="cta-note">No subscription. No expiry. One job won pays for it 100x over.</p>
+  </div>
+
+</div>
+
+<footer>
+  Free tool by <a href="https://www.getbidforge.com">BidForge</a> — Professional roofing estimates in under 2 minutes.
+</footer>
+
+<script>
+function fmt(n) {
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function getVal(id) {
+  var v = parseFloat(document.getElementById(id).value);
+  return isNaN(v) || v < 0 ? 0 : v;
+}// cap overhead at 99
+function getOverhead() {
+  var v = parseFloat(document.getElementById("overhead").value);
+  if (isNaN(v) || v < 0) return 10;
+  if (v > 99) { document.getElementById("overhead").value = 99; return 99; }
+  return v;
+}
+
+function calculate() {
+  var materials = getVal('materials');
+  var labor     = getVal('labor');
+  var disposal  = getVal('disposal');
+  var permits   = getVal('permits');
+  var subs      = getVal('subs');
+  var other     = getVal('other');
+  var overheadPct = getOverhead() / 100;
+
+  var directCosts = materials + labor + disposal + permits + subs + other;
+
+  if (directCosts === 0) {
+    document.getElementById('results-content').innerHTML =
+      '<div class="empty">Enter your job costs above to see your numbers.</div>';
+    return;
+  }
+
+  var overhead = directCosts * overheadPct;
+  var totalCost = directCosts + overhead;
+
+  var margins = [
+    { pct: 15, label: 'Conservative', highlight: false },
+    { pct: 20, label: 'Industry standard', highlight: true },
+    { pct: 25, label: 'Strong margin', highlight: false }
+  ];
+
+  var html = '';
+
+  margins.forEach(function(m) {
+    var charge = totalCost / (1 - m.pct / 100);
+    var profit = charge - totalCost;
+    html += '<div class="result-card' + (m.highlight ? ' highlight' : '') + '">';
+    html += '<div class="result-left">';
+    html += '<div class="result-margin">' + m.pct + '% margin</div>';
+    html += '<div class="result-label">' + m.label + '</div>';
+    html += '</div>';
+    html += '<div class="result-right">';
+    html += '<div class="result-charge">' + fmt(charge) + '</div>';
+    html += '<div class="result-profit">' + fmt(profit) + ' profit</div>';
+    html += '</div>';
+    html += '</div>';
+  });
+
+  // breakdown
+  html += '<div class="breakdown">';
+  html += '<div class="breakdown-title">Cost Breakdown</div>';
+  if (materials) html += '<div class="breakdown-row"><span>Materials</span><span class="val">' + fmt(materials) + '</span></div>';
+  if (labor)     html += '<div class="breakdown-row"><span>Labor</span><span class="val">' + fmt(labor) + '</span></div>';
+  if (disposal)  html += '<div class="breakdown-row"><span>Disposal / Dumpster</span><span class="val">' + fmt(disposal) + '</span></div>';
+  if (permits)   html += '<div class="breakdown-row"><span>Permits</span><span class="val">' + fmt(permits) + '</span></div>';
+  if (subs)      html += '<div class="breakdown-row"><span>Subcontractors</span><span class="val">' + fmt(subs) + '</span></div>';
+  if (other)     html += '<div class="breakdown-row"><span>Other</span><span class="val">' + fmt(other) + '</span></div>';
+  if (overhead)  html += '<div class="breakdown-row"><span>Overhead (' + getOverhead() + '%)</span><span class="val">' + fmt(overhead) + '</span></div>';
+  html += '<div class="breakdown-row total"><span>Total Cost</span><span class="val">' + fmt(totalCost) + '</span></div>';
+  html += '</div>';
+
+  document.getElementById('results-content').innerHTML = html;
+}
+</script>
+</body>
+</html>
