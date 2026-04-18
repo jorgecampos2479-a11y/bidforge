@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/tool", "destination": "/tool.html" }
+    { "source": "/tool", "destination": "/tool.html" },
+    { "source": "/calculator", "destination": "/calculator.html" }
   ]
 }
